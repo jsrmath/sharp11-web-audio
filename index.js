@@ -6,10 +6,10 @@ var async = require('async');
 
 var pianoSoundfont;
 if (new Audio().canPlayType('audio/ogg') !== '') {
-  pianoSoundfont = require('../soundfonts/acoustic_grand_piano-ogg');
+  pianoSoundfont = require('./soundfonts/acoustic_grand_piano-ogg');
 }
 else {
-  pianoSoundfont = require('../soundfonts/acoustic_grand_piano-mp3');
+  pianoSoundfont = require('./soundfonts/acoustic_grand_piano-mp3');
 }
 
 var defaultDuration = 0.3;
