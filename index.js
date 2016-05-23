@@ -12,7 +12,7 @@ else {
   pianoSoundfont = require('../soundfonts/acoustic_grand_piano-mp3');
 }
 
-var defaultDuration = .3;
+var defaultDuration = 0.3;
 var defaultOctave = 4;
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
