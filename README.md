@@ -25,5 +25,13 @@ audio.init(function (err, fns) {
 
 Chords and arrays of notes are played all at once.  Scales are played in succession, with the `duration` applying to each note individually.
 
+## `fns.arpeggiate(obj, start, duration, callback)`
+* `obj` must be a [scale](https://github.com/jsrmath/sharp11/blob/master/docs/scale.md), [chord](https://github.com/jsrmath/sharp11/blob/master/docs/chord.md), or array of [notes](https://github.com/jsrmath/sharp11/blob/master/docs/note.md).
+* `start` specifies how many seconds after invocation the object should be played.  It is `0` by default.
+* `duration` specifies how many seconds each note should be sustained for.  It is `0.3` by default.
+* If a `callback` is given, it will be invoked each time a note in the object is played.  It is given two parameters, the original object and the particular note being played.
+
+Scales, chords and arrays of notes are played in succession, with the `duration` applying to each note individually.
+
 ## `fns.stop()`
 Stops all objects scheduled to be played in the future and their callbacks.
