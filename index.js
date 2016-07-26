@@ -94,6 +94,32 @@ module.exports.init = function (func) {
       }
     };
 
+    var arpeggiate = function (obj, start, duration, callback) {
+      var notes;
+
+      start = ctx.currentTime + (start || 0);
+      duration = duration || defaultDuration;
+
+      if (callback) callback = _.partial(callback, obj);
+
+      if (s11.chord.isChord(obj)) {
+        notes = ensureOctave(obj).chord;
+      }
+      else if (s11.scale.isScale(obj)) {
+        notes = ensureOctave(obj).scale.concat(obj.root.transpose('P8'));
+      }
+      else if (obj instanceof Array) {
+        notes = _.map(obj, ensureOctave);
+      }
+      else {
+        throw new Error("Cannot arpeggiate over " + obj);
+      }
+
+      _.each(notes, function (note, i) {
+        playNote(note, start + i * duration, duration, callback);
+      });
+    };
+
     var stop = function () {
       _.invoke(sources, 'stop');
       _.invoke(events, 'clear');
@@ -102,9 +128,11 @@ module.exports.init = function (func) {
 
     var fns = {
       play: play,
+      arpeggiate: arpeggiate,
       stop: stop
     };
 
     func(err, fns);
   });
 };
+
