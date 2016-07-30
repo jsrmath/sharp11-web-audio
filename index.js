@@ -135,4 +135,3 @@ module.exports.init = function (func) {
     func(err, fns);
   });
 };
-
