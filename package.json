@@ -1,6 +1,6 @@
 {
   "name": "sharp11-web-audio",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Sharp11 plugin for playing notes, scales, and chords with Web Audio.",
   "main": "index.js",
   "repository": {
